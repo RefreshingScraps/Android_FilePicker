@@ -111,7 +111,8 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          /home/runner/work/Android_FilePicker/Android_FilePicker/app/build/outputs/apk/release/*.apk
-          /home/runner/work/Android_FilePicker/Android_FilePicker/app/build/outputs/apk/debug/*.apk
+          app/release/*.apk
+          app/build/outputs/apk/release/*.apk
+          app/build/outputs/apk/debug/*.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
