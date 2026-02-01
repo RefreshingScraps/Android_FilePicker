@@ -20,7 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        create("Pack") {
+        release {
             keyAlias = "1"
             keyPassword = "123456"
             storeFile = file("keystore.jks")
@@ -31,7 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig = Pack
+            signingConfig = signingConfigs
         }
     }
     compileOptions {
