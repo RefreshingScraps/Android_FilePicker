@@ -50,9 +50,9 @@ jobs:
         # 创建keystore.properties文件
         cat > keystore.properties <<EOF
         storeFile=keystore.jks
-        storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-        keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
-        keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
+        storePassword=123456
+        keyAlias=1
+        keyPassword=123456
         EOF
       shell: bash
     
