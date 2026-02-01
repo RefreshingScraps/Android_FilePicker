@@ -16,7 +16,10 @@ env:
   APP_MODULE: "app"
   # APK/AAB输出目录
   OUTPUT_DIR: "app/build/outputs"
-
+  
+permissions:
+  contents: write
+  
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -68,11 +71,6 @@ jobs:
         ./gradlew assembleRelease
         echo "Release APK built successfully"
     
-    - name: Build Release AAB (App Bundle)
-      run: |
-        ./gradlew bundleRelease
-        echo "Release AAB built successfully"
-    
     - name: Get version name
       id: version
       run: |
@@ -102,7 +100,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ env.TAG_NAME }}
-        release_name: Release ${{ env.VERSION_NAME }}
+        release_name: ${{ env.VERSION_NAME }}
         body: |
           ## What's Changed
           - Automated release build
@@ -116,7 +114,6 @@ jobs:
         prerelease: false
         files: |
           ${{ env.OUTPUT_DIR }}/apk/release/*.apk
-          ${{ env.OUTPUT_DIR }}/bundle/release/*.aab
           ${{ env.OUTPUT_DIR }}/mapping/release/mapping.txt
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
