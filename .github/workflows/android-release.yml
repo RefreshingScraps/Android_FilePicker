@@ -105,15 +105,13 @@ jobs:
           ## What's Changed
           - Automated release build
           - Version: ${{ env.VERSION_NAME }}
-          - Build date: $(date)
           
           ## Downloads
           - APK: `app-release.apk`
-          - AAB: `app-release.aab`
         draft: false
         prerelease: false
         files: |
-          ${{ env.OUTPUT_DIR }}/apk/release/*.apk
-          ${{ env.OUTPUT_DIR }}/mapping/release/mapping.txt
+          ./app/build/outputs/apk/release/*.apk
+          ./app/build/outputs/apk/debug/*.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
