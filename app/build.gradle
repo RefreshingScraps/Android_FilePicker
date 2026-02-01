@@ -19,14 +19,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs {
-        create("1") {
-            keyAlias = "1"
-            keyPassword = "123456"
-            storeFile = file("keystore.jks")
-            storePassword = "123456"
-        }
-    }
     buildTypes {
         release {
             minifyEnabled false
